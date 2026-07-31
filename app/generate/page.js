@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useSearchParams } from "next/navigation";
 
-const Generate = () => {
+const GenerateContent = () => {
   const searchParams = useSearchParams();
 
   // ✅ ALL HOOKS INSIDE COMPONENT
@@ -313,6 +313,14 @@ const Generate = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const Generate = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GenerateContent />
+    </Suspense>
   );
 };
 
